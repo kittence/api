@@ -46,6 +46,27 @@ var initHttpServer = () => {
 
     app.use(bodyParser.json());
 
+    app.post('/auth', (req, res) => {
+
+        // var id = req.body.id; //ID is returned, not supplied
+        var apiKey = req.body.apiKey;
+        var merchantID = req.body.merchantID;
+        var merchantDescription = req.body.merchantDescription;
+        var customerID = req.body.customerID;
+        var customerDescription = req.body.customerDescription;
+        var customerCardHash = req.body.customerCardHash;
+        var dateTimeStamp = req.body.dateTimeStamp;
+        var amount = req.body.amount;
+        var currency = req.body.currency;
+        var transactionStatus = req.body.transactionStatus;
+        var transactionType = req.body.transactionType;
+        res.set("Connection", "close");
+
+        res.send(JSON.stringify(response_SALE));
+
+    });
+
+
     app.post('/sale', (req, res) => {
 
         // var id = req.body.id; //ID is returned, not supplied
